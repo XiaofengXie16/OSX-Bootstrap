@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Header, Divider, Image } from "semantic-ui-react";
-import fileDownload from "js-file-download";
 import Logo from "../../../Logo.svg";
-import axios from "axios";
 class Display extends Component {
-  onClickHandler = async () => {
-    const res = await axios.get(
-      "https://us-central1-osx-boots.cloudfunctions.net/api/script"
-    );
-    return fileDownload(res.data, "osx_bootstrap.sh");
-  };
   render() {
     return (
       <Grid columns="equal">
