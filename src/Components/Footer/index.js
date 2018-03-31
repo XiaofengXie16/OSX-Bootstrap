@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu, Icon } from "semantic-ui-react";
 const Footer = () => (
-  <Menu borderless fixed="bottom">
+  <Menu borderless>
     <Menu.Item />
     <Menu.Item>
       <Icon name="copyright" size="large" />
