@@ -7,18 +7,57 @@ import VueLogo from "../../assets/vue.svg";
 import AngularLogo from "../../assets/angular.svg";
 import ReactLogo from "../../assets/react.svg";
 import { Fullpage, Slide } from "fullpage-react";
+import { downloadHelper } from "../../util";
 const { changeFullpageSlide } = Fullpage;
+
 export default class Home extends Component {
   state = {
     frameworkLogo: ReactLogo,
-    frameworkName: "angular"
+    frameworkName: "react",
+    downloadOptions: {
+      git: true,
+      watch: true,
+      markdown: true,
+      yarn: true,
+      node: true,
+      iterm2: true,
+      vscode: true,
+      chrome: true,
+      angular: false,
+      vue: false,
+      react: true,
+      prettier: true,
+      autoclose: true,
+      autoimport: true,
+      intellisense: true,
+      onedark: true,
+      findjump: true
+    }
   };
-  onClickDownloadHandler = event => {
-    console.log("name");
+  onClickAdvancedDownloadHandler = () => {
+    downloadHelper(this.state.downloadOptions);
   };
-
+  onClickBasicDownloadHandler = event => {
+    const name = event.target.name;
+    const framework = { angular: false, react: false, vue: false };
+    framework[name] = true;
+    this.setState(
+      {
+        downloadOptions: {
+          ...this.state.downloadOptions,
+          ...framework
+        }
+      },
+      () => {
+        downloadHelper(this.state.downloadOptions);
+      }
+    );
+  };
   onClickAdvancedHandler = event => {
     const name = event.target.name;
+    const framework = { angular: false, react: false, vue: false };
+    framework[name] = true;
+
     let logo;
     switch (name) {
       case "angular":
@@ -37,7 +76,18 @@ export default class Home extends Component {
     this.setState({
       frameworkLogo: logo,
       frameworkName: name,
-     
+      downloadOptions: {
+        ...this.state.downloadOptions,
+        ...framework
+      }
+    });
+  };
+  onChangeHandler = name => event => {
+    this.setState({
+      downloadOptions: {
+        ...this.state.downloadOptions,
+        [name]: !this.state.downloadOptions[`${name}`]
+      }
     });
   };
 
@@ -47,15 +97,16 @@ export default class Home extends Component {
       <Slide>
         <Display />
         <Download
-          downloadHandler={this.onClickDownloadHandler}
+          downloadHandler={this.onClickBasicDownloadHandler}
           advancedHandler={this.onClickAdvancedHandler}
         />
       </Slide>,
       <Slide>
         <DownloadTable
-        
           frameworkLogo={frameworkLogo}
           frameworkName={frameworkName}
+          changeHandler={this.onChangeHandler}
+          downloadHandler={this.onClickAdvancedDownloadHandler}
         />
       </Slide>
     ];

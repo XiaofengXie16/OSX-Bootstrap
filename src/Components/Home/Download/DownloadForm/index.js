@@ -5,11 +5,12 @@ const DownloadForm = props => (
     <Form.Group grouped>
       {props.data.map(item => (
         <Form.Checkbox
-        
+          style={{ fontSize: "1.3vw" }}
           key={item.name}
           label={item.name}
-          name={props.name}
+          name={item.identifier}
           value={item.value}
+          onChange={props.handler(item.identifier)}
           defaultChecked
         />
       ))}
