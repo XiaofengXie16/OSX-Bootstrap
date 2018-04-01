@@ -11,6 +11,7 @@ const DownloadForm = props => (
           value={item.value}
           onChange={props.handler(item.identifier)}
           defaultChecked
+          style={{ fontSize: "1.2em", margin: "0.5em" }}
         />
       ))}
     </Form.Group>

@@ -19,7 +19,7 @@ export default class DownloadTable extends Component {
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row columns={16} textAlign="left" divided>
+        <Grid.Row columns={16} textAlign="left">
           <Grid.Column width={2} />
           <Grid.Column width={3}>
             <DownloadForm

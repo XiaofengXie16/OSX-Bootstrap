@@ -72,6 +72,7 @@ export default class Home extends Component {
         logo = AngularLogo;
     }
     changeFullpageSlide(1);
+
     this.setState({
       frameworkLogo: logo,
       frameworkName: name,
