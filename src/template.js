@@ -14,20 +14,6 @@ fi
 # Update homebrew recipes
 brew update
 
-# Install GNU core utilities (those that come with OS X are outdated)
-brew tap homebrew/dupes
-brew install coreutils
-brew install gnu-sed --with-default-names
-brew install gnu-tar --with-default-names
-brew install gnu-indent --with-default-names
-brew install gnu-which --with-default-names
-brew install gnu-grep --with-default-names
-
-
-brew install findutils
-
-# Install Bash 4
-brew install bash
 
 PACKAGES=(
 ${common}
@@ -39,10 +25,6 @@ brew install \${PACKAGES[@]}
 echo "Cleaning up..."
 brew cleanup
 
-echo "Installing cask..."
-brew install caskroom/cask/brew-cask
-
-brew install caskroom/cask/brew-cask
 
 CASKS=(
 ${cask}
