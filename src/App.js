@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <Ribbon
-          alt="Github"
+          alt="Fork me on Github"
           src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
           href="https://github.com/skyrex-mark/OSX-Bootstrap"
         />
