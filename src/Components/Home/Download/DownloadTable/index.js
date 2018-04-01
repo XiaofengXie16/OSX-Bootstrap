@@ -12,51 +12,51 @@ export default class DownloadTable extends Component {
       changeHandler
     } = this.props;
     return (
-      <Grid columns={5}>
+      <Grid>
         <Grid.Row centered>
           <Grid.Column>
-            <Image src={frameworkLogo} />
+            <Image src={frameworkLogo} centered />
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row textAlign="left" columns={6}>
-          <Grid.Column />
-          <Grid.Column>
+        <Grid.Row columns={16} textAlign="left" divided>
+          <Grid.Column width={2} />
+          <Grid.Column width={3}>
             <DownloadForm
               name="Common"
               data={data.common}
               handler={changeHandler}
             />
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column width={3}>
             <DownloadForm
               name="Cask"
               data={data.cask}
               handler={changeHandler}
             />
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column width={3}>
             <DownloadForm
               name="Framework"
               data={data[`${frameworkName}`]}
               handler={changeHandler}
             />
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column width={3}>
             <DownloadForm
               name="VS Code Extension"
               data={data.vs_extension}
               handler={changeHandler}
             />
           </Grid.Column>
+
+          <Grid.Column width={2} />
         </Grid.Row>
 
-        <Grid.Row centered columns={9}>
-          <Grid.Column>
-            <Button primary size="massive" onClick={downloadHandler}>
-              Download
-            </Button>
-          </Grid.Column>
+        <Grid.Row centered columns={5}>
+          <Button primary size="massive" onClick={downloadHandler}>
+            Download
+          </Button>
         </Grid.Row>
       </Grid>
     );

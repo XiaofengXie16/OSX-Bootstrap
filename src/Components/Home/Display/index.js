@@ -9,7 +9,7 @@ class Display extends Component {
         <Grid.Column width={10}>
           <Divider hidden />
           <Grid.Row>
-            <Image src={Logo} centered size="medium" />
+            <Image src={Logo} centered size="small" />
           </Grid.Row>
           <Divider hidden />
           <Grid.Row>
