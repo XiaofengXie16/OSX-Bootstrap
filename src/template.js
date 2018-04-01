@@ -36,7 +36,6 @@ brew cask install \${CASKS[@]}
 echo "Installing fonts..."
 brew tap caskroom/fonts
 FONTS=(
-    font-inconsolidata
     font-roboto
     font-clear-sans
 )
