@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Container } from "semantic-ui-react";
 import Display from "./Display";
 import Download from "./Download";
 import DownloadTable from "./Download/DownloadTable";
@@ -96,6 +95,7 @@ export default class Home extends Component {
     const verticalSlides = [
       <Slide>
         <Display />
+
         <Download
           downloadHandler={this.onClickBasicDownloadHandler}
           advancedHandler={this.onClickAdvancedHandler}
@@ -110,10 +110,6 @@ export default class Home extends Component {
         />
       </Slide>
     ];
-    return (
-      <Container fluid>
-        <Fullpage slides={verticalSlides} />
-      </Container>
-    );
+    return <Fullpage slides={verticalSlides} />;
   }
 }
