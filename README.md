@@ -1,12 +1,10 @@
 # OSX Bootstrap
 
-# Install the most essential tools for frontend development with a single command!
+### Install the most essential tools for frontend development with a single command!
 
-Download : https://osx-boots.firebaseapp.com/
+### Download : https://osx-boots.firebaseapp.com/
 
----
+## Usage:
 
-Usage:
-
-* ## Find and Unzip the osx_bootstrap.zip file
-* ## Run `sh osx_bootstrap.sh`
+* ### Find and Unzip the osx_bootstrap.zip file
+* ### Run `sh osx_bootstrap.sh`
