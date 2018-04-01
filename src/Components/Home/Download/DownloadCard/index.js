@@ -4,7 +4,7 @@ export default class DownloadCard extends Component {
   render() {
     const { logo, name, downloadHandler, advancedHandler, color } = this.props;
     return (
-      <Card color={color}>
+      <Card color={color} style={{ marginBottom: "2em" }}>
         <Card.Content>
           <Image src={logo} inline size="small" />
           <Button.Group>

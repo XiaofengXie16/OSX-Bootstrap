@@ -6,8 +6,8 @@ import { Card } from "semantic-ui-react";
 import DownloadCard from "./DownloadCard";
 const style = {
   container: {
-    paddingLeft: "2vw",
-    paddingRight: "2vw"
+    paddingLeft: "2em",
+    paddingRight: "2em"
   }
 };
 export default class Download extends Component {

@@ -13,6 +13,7 @@ export default class Home extends Component {
   state = {
     frameworkLogo: ReactLogo,
     frameworkName: "react",
+    width: window.innerWidth,
     downloadOptions: {
       git: true,
       watch: true,
@@ -32,6 +33,15 @@ export default class Home extends Component {
       onedark: true,
       findjump: true
     }
+  };
+  componentDidMount() {
+    window.addEventListener("resize", this.handleWindowSizeChange);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleWindowSizeChange);
+  }
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
   };
   onClickAdvancedDownloadHandler = () => {
     downloadHelper(this.state.downloadOptions);
@@ -92,17 +102,17 @@ export default class Home extends Component {
   };
 
   render() {
-    const { frameworkLogo, frameworkName } = this.state;
+    const { frameworkLogo, frameworkName, width } = this.state;
+    const isMobile = width <= 765;
     const verticalSlides = [
-      <Slide>
+      <Slide style={isMobile && { height: "auto" }}>
         <Display />
-
         <Download
           downloadHandler={this.onClickBasicDownloadHandler}
           advancedHandler={this.onClickAdvancedHandler}
         />
       </Slide>,
-      <Slide>
+      <Slide style={isMobile && { height: "auto" }}>
         <DownloadTable
           frameworkLogo={frameworkLogo}
           frameworkName={frameworkName}

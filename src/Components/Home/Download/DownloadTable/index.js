@@ -12,7 +12,7 @@ export default class DownloadTable extends Component {
       changeHandler
     } = this.props;
     return (
-      <Grid>
+      <Grid stackable>
         <Grid.Row centered>
           <Grid.Column>
             <Image src={frameworkLogo} centered />
@@ -49,12 +49,15 @@ export default class DownloadTable extends Component {
               handler={changeHandler}
             />
           </Grid.Column>
-
           <Grid.Column width={2} />
         </Grid.Row>
-
         <Grid.Row centered columns={5}>
-          <Button primary size="massive" onClick={downloadHandler}>
+          <Button
+            primary
+            size="massive"
+            style={{ margin: "2em" }}
+            onClick={downloadHandler}
+          >
             Download
           </Button>
         </Grid.Row>
