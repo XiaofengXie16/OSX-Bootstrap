@@ -1,6 +1,7 @@
 import { template } from "./template";
 import data from "./data";
 import fileDownload from "js-file-download";
+import JSZip from "jszip";
 export const categoryBuilder = (array, identifier, prefix = "") => {
   let result = [];
   for (let key in array) {
@@ -36,7 +37,8 @@ const FRAMEWORK_CATEGORY = "framework";
 const EXTENSION_CATEGORY = "extension";
 const transformed = transform(data);
 
-export const downloadHelper = data => {
+export const downloadHelper = async data => {
+  const zip = new JSZip();
   const result = selectionFilter(transformed, data);
   const common = categoryBuilder(result, COMMON_CATEGORY);
 
@@ -48,5 +50,7 @@ export const downloadHelper = data => {
     "code --install-extension "
   );
   const code = template(common, cask, framework, extension);
-  fileDownload(code, "osx_bootstrap.sh");
+  zip.file("osx_bootstrap.sh", code);
+  const file = await zip.generateAsync({ type: "blob" });
+  fileDownload(file, "osx_bootstrap.zip");
 };
