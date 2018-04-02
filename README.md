@@ -7,4 +7,5 @@
 ## Usage:
 
 * ### Find and Unzip the osx_bootstrap.zip file
+* ### Open a terminal
 * ### Run `sh osx_bootstrap.sh`
