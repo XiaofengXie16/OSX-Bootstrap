@@ -7,8 +7,9 @@ export default class DownloadCard extends Component {
       <Card color={color} style={{ marginBottom: "2em" }}>
         <Card.Content>
           <Image src={logo} inline size="small" />
-          <Button.Group>
+          <Button.Group attached="left" fluid>
             <Button
+              compact
               primary
               name={name}
               size="massive"
@@ -17,6 +18,7 @@ export default class DownloadCard extends Component {
               Download
             </Button>
             <Button
+              compact
               secondary
               name={name}
               size="massive"

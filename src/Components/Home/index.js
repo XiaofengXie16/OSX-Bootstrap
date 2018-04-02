@@ -5,15 +5,12 @@ import DownloadTable from "./Download/DownloadTable";
 import VueLogo from "../../assets/vue.svg";
 import AngularLogo from "../../assets/angular.svg";
 import ReactLogo from "../../assets/react.svg";
-import { Fullpage, Slide } from "fullpage-react";
 import { downloadHelper } from "../../util";
-const { changeFullpageSlide } = Fullpage;
 
 export default class Home extends Component {
   state = {
     frameworkLogo: ReactLogo,
     frameworkName: "react",
-    width: window.innerWidth,
     downloadOptions: {
       git: true,
       watch: true,
@@ -34,15 +31,7 @@ export default class Home extends Component {
       findjump: true
     }
   };
-  componentDidMount() {
-    window.addEventListener("resize", this.handleWindowSizeChange);
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.handleWindowSizeChange);
-  }
-  handleWindowSizeChange = () => {
-    this.setState({ width: window.innerWidth });
-  };
+
   onClickAdvancedDownloadHandler = () => {
     downloadHelper(this.state.downloadOptions);
   };
@@ -66,7 +55,6 @@ export default class Home extends Component {
     const name = event.target.name;
     const framework = { angular: false, react: false, vue: false };
     framework[name] = true;
-
     let logo;
     switch (name) {
       case "angular":
@@ -81,7 +69,6 @@ export default class Home extends Component {
       default:
         logo = AngularLogo;
     }
-    changeFullpageSlide(1);
 
     this.setState({
       frameworkLogo: logo,
@@ -91,6 +78,7 @@ export default class Home extends Component {
         ...framework
       }
     });
+    window.location.href = "#selection";
   };
   onChangeHandler = name => event => {
     this.setState({
@@ -102,25 +90,23 @@ export default class Home extends Component {
   };
 
   render() {
-    const { frameworkLogo, frameworkName, width } = this.state;
-    const isMobile = width <= 765;
-    const verticalSlides = [
-      <Slide style={isMobile && { height: "auto" }}>
+    const { frameworkLogo, frameworkName } = this.state;
+
+    return (
+      <React.Fragment>
         <Display />
         <Download
           downloadHandler={this.onClickBasicDownloadHandler}
           advancedHandler={this.onClickAdvancedHandler}
         />
-      </Slide>,
-      <Slide style={isMobile && { height: "auto" }}>
+
         <DownloadTable
           frameworkLogo={frameworkLogo}
           frameworkName={frameworkName}
           changeHandler={this.onChangeHandler}
           downloadHandler={this.onClickAdvancedDownloadHandler}
         />
-      </Slide>
-    ];
-    return <Fullpage slides={verticalSlides} />;
+      </React.Fragment>
+    );
   }
 }
