@@ -43,7 +43,11 @@ export const downloadHelper = async data => {
   const common = categoryBuilder(result, COMMON_CATEGORY);
 
   const cask = categoryBuilder(result, CASK_CATEGORY);
-  const framework = categoryBuilder(result, FRAMEWORK_CATEGORY, "npm install ");
+  const framework = categoryBuilder(
+    result,
+    FRAMEWORK_CATEGORY,
+    "npm install -g "
+  );
   const extension = categoryBuilder(
     result,
     EXTENSION_CATEGORY,
