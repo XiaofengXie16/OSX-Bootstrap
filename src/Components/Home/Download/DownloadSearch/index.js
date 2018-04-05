@@ -5,6 +5,9 @@ export default class DownloadSearch extends Component {
   state = {
     isLoading: false
   };
+  handleResultSelect = (e, { result }) =>
+    this.setState({ value: result.title });
+
   onClickSearch = async () => {};
   render() {
     return <Search fluid />;

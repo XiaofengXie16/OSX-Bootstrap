@@ -29,7 +29,9 @@ export default class Home extends Component {
       autoimport: true,
       intellisense: true,
       onedark: true,
-      findjump: true
+      findjump: true,
+      colorizer: true,
+      pathIntellisense: true
     }
   };
 

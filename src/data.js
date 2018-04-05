@@ -84,6 +84,18 @@ const options = {
       category: "extension"
     },
     {
+      name: "Bracket Pair Colorizer",
+      value: "CoenraadS.bracket-pair-colorizer",
+      identifier: "colorizer",
+      category: "extension"
+    },
+    {
+      name: "Path Intellisense",
+      value: "christian-kohler.path-intellisense",
+      identifier: "pathIntellisense",
+      category: "extension"
+    },
+    {
       name: "One Dark Pro",
       value: "zhuangtongfa.Material-theme",
       identifier: "onedark",
