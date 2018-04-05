@@ -34,6 +34,7 @@ export const selectionFilter = (data, state) => {
 const COMMON_CATEGORY = "common";
 const CASK_CATEGORY = "cask";
 const FRAMEWORK_CATEGORY = "framework";
+const NPM_CATEGORY = "npm";
 const EXTENSION_CATEGORY = "extension";
 const transformed = transform(data);
 
@@ -48,12 +49,13 @@ export const downloadHelper = async data => {
     FRAMEWORK_CATEGORY,
     "npm install -g "
   );
+  const npm = categoryBuilder(result, NPM_CATEGORY, "npm install -g ");
   const extension = categoryBuilder(
     result,
     EXTENSION_CATEGORY,
     "code --install-extension "
   );
-  const code = template(common, cask, framework, extension);
+  const code = template(common, cask, framework, npm, extension);
   zip.file("osx_bootstrap.sh", code);
   const file = await zip.generateAsync({ type: "blob" });
   fileDownload(file, "osx_bootstrap.zip");

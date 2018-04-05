@@ -55,6 +55,9 @@ const options = {
       category: "framework"
     }
   ],
+  npm: [
+    { name: "eslint", value: "eslint", identifier: "eslint", category: "npm" }
+  ],
   vs_extension: [
     {
       name: "prettier",

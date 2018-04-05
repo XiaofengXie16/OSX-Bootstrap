@@ -2,6 +2,7 @@ export const template = (
   common,
   cask,
   framework,
+  npm,
   extensions
 ) => `echo "Starting bootstrapping"
 
@@ -44,7 +45,7 @@ brew cask install \${FONTS[@]}
 
 echo "Installing global npm packages..."
 ${framework}
-
+${npm}
 echo "Installing VS code extensions..."
 ${extensions}
 

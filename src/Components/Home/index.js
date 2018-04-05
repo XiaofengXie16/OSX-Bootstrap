@@ -23,6 +23,7 @@ export default class Home extends Component {
       angular: false,
       vue: false,
       react: true,
+      eslint: true,
       prettier: true,
       autoclose: true,
       autoimport: true,

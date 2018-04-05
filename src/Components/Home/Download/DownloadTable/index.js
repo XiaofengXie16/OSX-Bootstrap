@@ -43,6 +43,11 @@ export default class DownloadTable extends Component {
                   data={data[`${frameworkName}`]}
                   handler={changeHandler}
                 />
+                <DownloadForm
+                  name="npm"
+                  data={data.npm}
+                  handler={changeHandler}
+                />
               </Grid.Column>
               <Grid.Column width={3}>
                 <DownloadForm
