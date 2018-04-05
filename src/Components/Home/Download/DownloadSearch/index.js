@@ -10,6 +10,6 @@ export default class DownloadSearch extends Component {
 
   onClickSearch = async () => {};
   render() {
-    return <Search fluid />;
+    return <Search size="massive" fluid />;
   }
 }

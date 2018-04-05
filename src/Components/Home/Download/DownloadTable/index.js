@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Grid, Image, Button } from "semantic-ui-react";
+import ScrollableAnchor from "react-scrollable-anchor";
+import DownloadSearch from "../DownloadSearch";
 import DownloadForm from "../DownloadForm";
 import data from "../../../../data";
-import ScrollableAnchor from "react-scrollable-anchor";
 export default class DownloadTable extends Component {
   render() {
     const {
@@ -16,11 +17,11 @@ export default class DownloadTable extends Component {
         <div>
           <Grid stackable>
             <Grid.Row centered>
-              <Grid.Column>
-                <Image src={frameworkLogo} centered />
-              </Grid.Column>
+              <Image src={frameworkLogo} size="medium" />
             </Grid.Row>
-
+            <Grid.Row centered>
+              <DownloadSearch />
+            </Grid.Row>
             <Grid.Row columns={16} textAlign="left">
               <Grid.Column width={2} />
               <Grid.Column width={3}>
