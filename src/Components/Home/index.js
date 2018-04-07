@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import AngularLogo from "../../assets/angular.svg";
+import ReactLogo from "../../assets/react.svg";
+import VueLogo from "../../assets/vue.svg";
+import { downloadHelper } from "../../util";
 import Display from "./Display";
 import Download from "./Download";
 import DownloadTable from "./Download/DownloadTable";
-import VueLogo from "../../assets/vue.svg";
-import AngularLogo from "../../assets/angular.svg";
-import ReactLogo from "../../assets/react.svg";
-import { downloadHelper } from "../../util";
 
 export default class Home extends Component {
   state = {

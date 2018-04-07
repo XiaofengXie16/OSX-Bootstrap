@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Image } from "semantic-ui-react";
+import { Button, Card, Image } from "semantic-ui-react";
 export default class DownloadCard extends Component {
   render() {
     const { logo, name, downloadHandler, advancedHandler, color } = this.props;
