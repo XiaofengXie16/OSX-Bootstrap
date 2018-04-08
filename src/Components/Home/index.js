@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import AngularLogo from "../../assets/angular.svg";
 import ReactLogo from "../../assets/react.svg";
 import VueLogo from "../../assets/vue.svg";
+import data from "../../data";
 import { downloadHelper } from "../../util";
 import Display from "./Display";
-import data from "../../data";
 import Download from "./Download";
 import DownloadTable from "./Download/DownloadTable";
 
-export default class Home extends Component {
+class Home extends Component {
   state = {
     frameworkLogo: ReactLogo,
     frameworkName: "react",
@@ -55,24 +55,21 @@ export default class Home extends Component {
       }
     );
   };
+
+  selectFramework = name => {
+    return ({ angular: false, react: false, vue: false }[name] = true);
+  };
+  selectLogo = name => {
+    return {
+      angular: AngularLogo,
+      vue: VueLogo,
+      react: ReactLogo
+    }[name];
+  };
   onClickAdvancedHandler = event => {
     const name = event.target.name;
-    const framework = { angular: false, react: false, vue: false };
-    framework[name] = true;
-    let logo;
-    switch (name) {
-      case "angular":
-        logo = AngularLogo;
-        break;
-      case "vue":
-        logo = VueLogo;
-        break;
-      case "react":
-        logo = ReactLogo;
-        break;
-      default:
-        logo = ReactLogo;
-    }
+    const logo = this.selectLogo(name);
+    const framework = this.selectFramework(name);
 
     this.setState({
       frameworkLogo: logo,
@@ -114,3 +111,5 @@ export default class Home extends Component {
     );
   }
 }
+
+export default Home;
