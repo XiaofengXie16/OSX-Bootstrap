@@ -4,7 +4,7 @@ import Banner from "./Components/Banner";
 import Ribbon from "./Components/Ribbon";
 import "./App.css";
 
-export class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div className="App">

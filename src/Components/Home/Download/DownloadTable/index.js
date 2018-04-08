@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import { Grid, Image, Button } from "semantic-ui-react";
 import ScrollableAnchor from "react-scrollable-anchor";
-import DownloadSearch from "../DownloadSearch";
+import { Button, Grid, Image } from "semantic-ui-react";
 import DownloadForm from "../DownloadForm";
-import data from "../../../../data";
+import DownloadSearch from "../DownloadSearch";
+
 export default class DownloadTable extends Component {
   render() {
     const {
       frameworkLogo,
       frameworkName,
       downloadHandler,
-      changeHandler
+      changeHandler,
+      data
     } = this.props;
     return (
       <ScrollableAnchor id={"selection"}>

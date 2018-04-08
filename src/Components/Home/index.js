@@ -4,6 +4,7 @@ import ReactLogo from "../../assets/react.svg";
 import VueLogo from "../../assets/vue.svg";
 import { downloadHelper } from "../../util";
 import Display from "./Display";
+import data from "../../data";
 import Download from "./Download";
 import DownloadTable from "./Download/DownloadTable";
 
@@ -70,7 +71,7 @@ export default class Home extends Component {
         logo = ReactLogo;
         break;
       default:
-        logo = AngularLogo;
+        logo = ReactLogo;
     }
 
     this.setState({
@@ -102,8 +103,8 @@ export default class Home extends Component {
           downloadHandler={this.onClickBasicDownloadHandler}
           advancedHandler={this.onClickAdvancedHandler}
         />
-
         <DownloadTable
+          data={data}
           frameworkLogo={frameworkLogo}
           frameworkName={frameworkName}
           changeHandler={this.onChangeHandler}
