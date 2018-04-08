@@ -11,34 +11,30 @@ import DownloadTable from "./Download/DownloadTable";
 class Home extends Component {
   state = {
     frameworkLogo: ReactLogo,
-    frameworkName: "react",
-    downloadOptions: {
-      git: true,
-      watch: true,
-      markdown: true,
-      yarn: true,
-      node: true,
-      iterm2: true,
-      vscode: true,
-      chrome: true,
-      angular: false,
-      vue: false,
-      react: true,
-      eslint: true,
-      prettier: true,
-      autoclose: true,
-      autoimport: true,
-      intellisense: true,
-      onedark: true,
-      findjump: true,
-      colorizer: true,
-      pathIntellisense: true
+    frameworkName: "react"
+  };
+  getPackageState = data => {
+    let pacakageState = {};
+    for (let key in data) {
+      for (let option in data[key]) {
+        pacakageState = {
+          ...pacakageState,
+          [data[key][option].identifier]: true
+        };
+      }
     }
+    return pacakageState;
+  };
+  componentDidMount = () => {
+    this.setState({
+      downloadOptions: this.getPackageState(data)
+    });
   };
 
   onClickAdvancedDownloadHandler = () => {
     downloadHelper(this.state.downloadOptions);
   };
+
   onClickBasicDownloadHandler = event => {
     const name = event.target.name;
     const framework = { angular: false, react: false, vue: false };
@@ -59,6 +55,7 @@ class Home extends Component {
   selectFramework = name => {
     return ({ angular: false, react: false, vue: false }[name] = true);
   };
+
   selectLogo = name => {
     return {
       angular: AngularLogo,
@@ -66,6 +63,7 @@ class Home extends Component {
       react: ReactLogo
     }[name];
   };
+
   onClickAdvancedHandler = event => {
     const name = event.target.name;
     const logo = this.selectLogo(name);
@@ -81,6 +79,7 @@ class Home extends Component {
     });
     window.location.href = "#selection";
   };
+
   onChangeHandler = name => event => {
     this.setState({
       downloadOptions: {

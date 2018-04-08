@@ -24,9 +24,7 @@ export const selectionFilter = (data, state) => {
   const result = [];
   for (let o in data) {
     const key = data[o].identifier;
-    if (state[key]) {
-      result.push(data[o]);
-    }
+    if (state[key]) result.push(data[o]);
   }
   return result;
 };
