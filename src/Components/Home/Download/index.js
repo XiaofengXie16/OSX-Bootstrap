@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import VueLogo from "../../../assets/vue.svg";
-import ReactLogo from "../../../assets/react.svg";
-import AngularLogo from "../../../assets/angular.svg";
 import { Card } from "semantic-ui-react";
+import AngularLogo from "../../../assets/angular.svg";
+import ReactLogo from "../../../assets/react.svg";
+import VueLogo from "../../../assets/vue.svg";
 import DownloadCard from "./DownloadCard";
 const style = {
   container: {

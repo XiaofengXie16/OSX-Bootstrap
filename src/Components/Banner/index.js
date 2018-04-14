@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Header } from "semantic-ui-react";
+import { Header, Menu } from "semantic-ui-react";
 const Banner = () => (
   <Menu inverted fluid borderless style={{ borderRadius: "0", margin: "0" }}>
     <Menu.Item />

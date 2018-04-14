@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Header, Image, Label } from "semantic-ui-react";
 import Logo from "../../../Logo.svg";
+
 const style = {
   title: {
     fontSize: "2.5em"
@@ -17,7 +18,7 @@ const style = {
     marginBottom: "2em"
   }
 };
-class Display extends Component {
+export default class Display extends Component {
   render() {
     return (
       <React.Fragment>
@@ -37,5 +38,3 @@ class Display extends Component {
     );
   }
 }
-
-export default Display;

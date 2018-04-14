@@ -1,40 +1,40 @@
 import React, { Component } from "react";
+import AngularLogo from "../../assets/angular.svg";
+import ReactLogo from "../../assets/react.svg";
+import VueLogo from "../../assets/vue.svg";
+import data from "../../data";
+import { downloadHelper } from "../../utils";
 import Display from "./Display";
 import Download from "./Download";
 import DownloadTable from "./Download/DownloadTable";
-import VueLogo from "../../assets/vue.svg";
-import AngularLogo from "../../assets/angular.svg";
-import ReactLogo from "../../assets/react.svg";
-import { downloadHelper } from "../../util";
 
-export default class Home extends Component {
+class Home extends Component {
   state = {
     frameworkLogo: ReactLogo,
-    frameworkName: "react",
-    downloadOptions: {
-      git: true,
-      watch: true,
-      markdown: true,
-      yarn: true,
-      node: true,
-      iterm2: true,
-      vscode: true,
-      chrome: true,
-      angular: false,
-      vue: false,
-      react: true,
-      prettier: true,
-      autoclose: true,
-      autoimport: true,
-      intellisense: true,
-      onedark: true,
-      findjump: true
+    frameworkName: "react"
+  };
+  getPackageState = data => {
+    let pacakageState = {};
+    for (let key in data) {
+      for (let option in data[key]) {
+        pacakageState = {
+          ...pacakageState,
+          [data[key][option].identifier]: true
+        };
+      }
     }
+    return pacakageState;
+  };
+  componentDidMount = () => {
+    this.setState({
+      downloadOptions: this.getPackageState(data)
+    });
   };
 
   onClickAdvancedDownloadHandler = () => {
     downloadHelper(this.state.downloadOptions);
   };
+
   onClickBasicDownloadHandler = event => {
     const name = event.target.name;
     const framework = { angular: false, react: false, vue: false };
@@ -53,40 +53,36 @@ export default class Home extends Component {
   };
   onClickAdvancedHandler = event => {
     const name = event.target.name;
-    const framework = { angular: false, react: false, vue: false };
-    framework[name] = true;
-    let logo;
-    switch (name) {
-      case "angular":
-        logo = AngularLogo;
-        break;
-      case "vue":
-        logo = VueLogo;
-        break;
-      case "react":
-        logo = ReactLogo;
-        break;
-      default:
-        logo = AngularLogo;
-    }
-
     this.setState({
-      frameworkLogo: logo,
+      frameworkLogo: this.selectLogo(name),
       frameworkName: name,
       downloadOptions: {
         ...this.state.downloadOptions,
-        ...framework
+        ...this.selectFramework(name)
       }
     });
     window.location.href = "#selection";
   };
-  onChangeHandler = name => event => {
+
+  onChangeCheckboxHandler = name => event => {
     this.setState({
       downloadOptions: {
         ...this.state.downloadOptions,
         [name]: !this.state.downloadOptions[`${name}`]
       }
     });
+  };
+
+  selectFramework = name => {
+    return ({ angular: false, react: false, vue: false }[name] = true);
+  };
+
+  selectLogo = name => {
+    return {
+      angular: AngularLogo,
+      vue: VueLogo,
+      react: ReactLogo
+    }[name];
   };
 
   render() {
@@ -99,14 +95,16 @@ export default class Home extends Component {
           downloadHandler={this.onClickBasicDownloadHandler}
           advancedHandler={this.onClickAdvancedHandler}
         />
-
         <DownloadTable
+          data={data}
           frameworkLogo={frameworkLogo}
           frameworkName={frameworkName}
-          changeHandler={this.onChangeHandler}
+          changeHandler={this.onChangeCheckboxHandler}
           downloadHandler={this.onClickAdvancedDownloadHandler}
         />
       </React.Fragment>
     );
   }
 }
+
+export default Home;

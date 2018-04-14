@@ -1,26 +1,24 @@
 import React, { Component } from "react";
-import { Grid, Image, Button } from "semantic-ui-react";
-import DownloadForm from "../DownloadForm";
-import data from "../../../../data";
 import ScrollableAnchor from "react-scrollable-anchor";
+import { Button, Grid, Image } from "semantic-ui-react";
+import DownloadForm from "../DownloadForm";
+
 export default class DownloadTable extends Component {
   render() {
     const {
       frameworkLogo,
       frameworkName,
       downloadHandler,
-      changeHandler
+      changeHandler,
+      data
     } = this.props;
     return (
       <ScrollableAnchor id={"selection"}>
         <div>
           <Grid stackable>
             <Grid.Row centered>
-              <Grid.Column>
-                <Image src={frameworkLogo} centered />
-              </Grid.Column>
+              <Image src={frameworkLogo} size="medium" />
             </Grid.Row>
-
             <Grid.Row columns={16} textAlign="left">
               <Grid.Column width={2} />
               <Grid.Column width={3}>
@@ -41,6 +39,11 @@ export default class DownloadTable extends Component {
                 <DownloadForm
                   name="Framework"
                   data={data[`${frameworkName}`]}
+                  handler={changeHandler}
+                />
+                <DownloadForm
+                  name="npm"
+                  data={data.npm}
                   handler={changeHandler}
                 />
               </Grid.Column>

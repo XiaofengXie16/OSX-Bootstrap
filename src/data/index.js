@@ -29,6 +29,12 @@ const options = {
       value: "iterm2",
       identifier: "iterm2",
       category: "cask"
+    },
+    {
+      name: "sublime-text",
+      value: "sublime-text",
+      identifier: "sublime-text",
+      category: "cask"
     }
   ],
   angular: [
@@ -55,6 +61,9 @@ const options = {
       category: "framework"
     }
   ],
+  npm: [
+    { name: "eslint", value: "eslint", identifier: "eslint", category: "npm" }
+  ],
   vs_extension: [
     {
       name: "prettier",
@@ -78,6 +87,18 @@ const options = {
       name: "npm intellisense",
       value: "christian-kohler.npm-intellisense",
       identifier: "intellisense",
+      category: "extension"
+    },
+    {
+      name: "Bracket Pair Colorizer",
+      value: "CoenraadS.bracket-pair-colorizer",
+      identifier: "colorizer",
+      category: "extension"
+    },
+    {
+      name: "Path Intellisense",
+      value: "christian-kohler.path-intellisense",
+      identifier: "pathIntellisense",
       category: "extension"
     },
     {
