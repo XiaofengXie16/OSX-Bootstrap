@@ -3,7 +3,7 @@ import AngularLogo from "../../assets/angular.svg";
 import ReactLogo from "../../assets/react.svg";
 import VueLogo from "../../assets/vue.svg";
 import data from "../../data";
-import { downloadHelper } from "../../util";
+import { downloadHelper } from "../../utils";
 import Display from "./Display";
 import Download from "./Download";
 import DownloadTable from "./Download/DownloadTable";
@@ -51,6 +51,27 @@ class Home extends Component {
       }
     );
   };
+  onClickAdvancedHandler = event => {
+    const name = event.target.name;
+    this.setState({
+      frameworkLogo: this.selectLogo(name),
+      frameworkName: name,
+      downloadOptions: {
+        ...this.state.downloadOptions,
+        ...this.selectFramework(name)
+      }
+    });
+    window.location.href = "#selection";
+  };
+
+  onChangeCheckboxHandler = name => event => {
+    this.setState({
+      downloadOptions: {
+        ...this.state.downloadOptions,
+        [name]: !this.state.downloadOptions[`${name}`]
+      }
+    });
+  };
 
   selectFramework = name => {
     return ({ angular: false, react: false, vue: false }[name] = true);
@@ -62,31 +83,6 @@ class Home extends Component {
       vue: VueLogo,
       react: ReactLogo
     }[name];
-  };
-
-  onClickAdvancedHandler = event => {
-    const name = event.target.name;
-    const logo = this.selectLogo(name);
-    const framework = this.selectFramework(name);
-
-    this.setState({
-      frameworkLogo: logo,
-      frameworkName: name,
-      downloadOptions: {
-        ...this.state.downloadOptions,
-        ...framework
-      }
-    });
-    window.location.href = "#selection";
-  };
-
-  onChangeHandler = name => event => {
-    this.setState({
-      downloadOptions: {
-        ...this.state.downloadOptions,
-        [name]: !this.state.downloadOptions[`${name}`]
-      }
-    });
   };
 
   render() {
@@ -103,7 +99,7 @@ class Home extends Component {
           data={data}
           frameworkLogo={frameworkLogo}
           frameworkName={frameworkName}
-          changeHandler={this.onChangeHandler}
+          changeHandler={this.onChangeCheckboxHandler}
           downloadHandler={this.onClickAdvancedDownloadHandler}
         />
       </React.Fragment>

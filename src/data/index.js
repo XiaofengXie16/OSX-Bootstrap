@@ -29,6 +29,12 @@ const options = {
       value: "iterm2",
       identifier: "iterm2",
       category: "cask"
+    },
+    {
+      name: "sublime-text",
+      value: "sublime-text",
+      identifier: "sublime-text",
+      category: "cask"
     }
   ],
   angular: [

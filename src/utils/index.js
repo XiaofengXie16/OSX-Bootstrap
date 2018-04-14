@@ -1,5 +1,5 @@
-import { template } from "./template";
-import data from "./data";
+import { template } from "../template";
+import data from "../data";
 import fileDownload from "js-file-download";
 import JSZip from "jszip";
 export const categoryBuilder = (array, identifier, prefix = "") => {
@@ -53,6 +53,7 @@ export const downloadHelper = async data => {
     EXTENSION_CATEGORY,
     "code --install-extension "
   );
+
   const code = template(common, cask, framework, npm, extension);
   zip.file("osx_bootstrap.sh", code);
   const file = await zip.generateAsync({ type: "blob" });

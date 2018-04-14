@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Home from "./Components/Home";
-import Banner from "./Components/Banner";
-import Ribbon from "./Components/Ribbon";
+import Home from "./components/Home";
+import Banner from "./components/Banner";
+import Ribbon from "./components/Ribbon";
 import "./App.css";
 
 export default class App extends Component {
