@@ -19,9 +19,22 @@
     "semantic-ui-react": "^0.79.0"
   },
   "scripts": {
+    "precommit": "lint-staged && yarn test:coverage",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.4",
+    "mocha": "^5.1.0",
+    "prettier": "^1.12.0"
+  },
+  "lint-staged": {
+    "*.js": ["prettier --trailing-comma es5 --single-quote --write", "git add"],
+    "yarn.lock": ["git rm --cached"]
   }
 }
