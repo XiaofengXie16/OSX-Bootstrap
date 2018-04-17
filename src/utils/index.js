@@ -1,7 +1,7 @@
-import fileDownload from "js-file-download";
-import JSZip from "jszip";
-import data from "../data";
-import { template } from "../template";
+import fileDownload from 'js-file-download';
+import JSZip from 'jszip';
+import data from '../data';
+import { template } from '../template';
 
 /**
  * This function converts a nested pacakge data object to an array of objects
@@ -24,7 +24,7 @@ export const selectionFilter = (data, state) => {
     accumulator.push(cur);
     return accumulator;
   };
-  return data.filter(item => state[item.identifier]).reduce(reducer, []);
+  return data.filter(({ identifier }) => state[identifier]).reduce(reducer, []);
 };
 
 /**
@@ -33,23 +33,23 @@ export const selectionFilter = (data, state) => {
  * @param {string} identifier - category
  * @param {string} prefix     - linux command prefix
  */
-export const categoryBuilder = (data, identifier, prefix = "") => {
+export const categoryBuilder = (data, identifier, prefix = '') => {
   const reducer = (accumulator, cur) => {
     accumulator.push(cur);
     return accumulator;
   };
   return data
     .filter(item => item.category === identifier)
-    .map(item => prefix + item.value)
+    .map(({ value }) => prefix + value)
     .reduce(reducer, [])
-    .join("\n");
+    .join('\n');
 };
 
-const COMMON_CATEGORY = "common";
-const CASK_CATEGORY = "cask";
-const FRAMEWORK_CATEGORY = "framework";
-const NPM_CATEGORY = "npm";
-const EXTENSION_CATEGORY = "extension";
+const COMMON_CATEGORY = 'common';
+const CASK_CATEGORY = 'cask';
+const FRAMEWORK_CATEGORY = 'framework';
+const NPM_CATEGORY = 'npm';
+const EXTENSION_CATEGORY = 'extension';
 const transformed = transform(data);
 
 /**
@@ -65,17 +65,17 @@ export const downloadHelper = async data => {
   const framework = categoryBuilder(
     result,
     FRAMEWORK_CATEGORY,
-    "npm install -g "
+    'npm install -g '
   );
-  const npm = categoryBuilder(result, NPM_CATEGORY, "npm install -g ");
+  const npm = categoryBuilder(result, NPM_CATEGORY, 'npm install -g ');
   const extension = categoryBuilder(
     result,
     EXTENSION_CATEGORY,
-    "code --install-extension "
+    'code --install-extension '
   );
 
   const code = template(common, cask, framework, npm, extension);
-  zip.file("osx_bootstrap.sh", code);
-  const file = await zip.generateAsync({ type: "blob" });
-  fileDownload(file, "osx_bootstrap.zip");
+  zip.file('osx_bootstrap.sh', code);
+  const file = await zip.generateAsync({ type: 'blob' });
+  fileDownload(file, 'osx_bootstrap.zip');
 };
