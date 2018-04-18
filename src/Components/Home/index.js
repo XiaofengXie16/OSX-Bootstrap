@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import AngularLogo from "../../assets/angular.svg";
-import ReactLogo from "../../assets/react.svg";
-import VueLogo from "../../assets/vue.svg";
-import data from "../../data";
-import { downloadHelper } from "../../utils";
-import Display from "./Display";
-import Download from "./Download";
-import DownloadTable from "./Download/DownloadTable";
+import React, { Component } from 'react';
+import AngularLogo from '../../assets/angular.svg';
+import ReactLogo from '../../assets/react.svg';
+import VueLogo from '../../assets/vue.svg';
+import data from '../../data';
+import { downloadHelper } from '../../utils';
+import Display from './Display';
+import Download from './Download';
+import DownloadTable from './Download/DownloadTable';
 
 class Home extends Component {
   state = {
     frameworkLogo: ReactLogo,
-    frameworkName: "react"
+    frameworkName: 'react',
   };
   getPackageState = data => {
     let pacakageState = {};
@@ -19,7 +19,7 @@ class Home extends Component {
       for (let option in data[key]) {
         pacakageState = {
           ...pacakageState,
-          [data[key][option].identifier]: true
+          [data[key][option].identifier]: true,
         };
       }
     }
@@ -27,7 +27,7 @@ class Home extends Component {
   };
   componentDidMount = () => {
     this.setState({
-      downloadOptions: this.getPackageState(data)
+      downloadOptions: this.getPackageState(data),
     });
   };
 
@@ -43,8 +43,8 @@ class Home extends Component {
       {
         downloadOptions: {
           ...this.state.downloadOptions,
-          ...framework
-        }
+          ...framework,
+        },
       },
       () => {
         downloadHelper(this.state.downloadOptions);
@@ -58,30 +58,32 @@ class Home extends Component {
       frameworkName: name,
       downloadOptions: {
         ...this.state.downloadOptions,
-        ...this.selectFramework(name)
-      }
+        ...this.selectFramework(name),
+      },
     });
-    window.location.href = "#selection";
+    window.location.href = '#selection';
   };
 
   onChangeCheckboxHandler = name => event => {
     this.setState({
       downloadOptions: {
         ...this.state.downloadOptions,
-        [name]: !this.state.downloadOptions[`${name}`]
-      }
+        [name]: !this.state.downloadOptions[`${name}`],
+      },
     });
   };
 
   selectFramework = name => {
-    return ({ angular: false, react: false, vue: false }[name] = true);
+    const option = { angular: false, react: false, vue: false };
+    option[name] = true;
+    return option;
   };
 
   selectLogo = name => {
     return {
       angular: AngularLogo,
       vue: VueLogo,
-      react: ReactLogo
+      react: ReactLogo,
     }[name];
   };
 
