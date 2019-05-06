@@ -16,7 +16,8 @@
     "react-scrollable-anchor": "^0.6.1",
     "redux": "^3.7.2",
     "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.79.0"
+    "semantic-ui-react": "^0.79.0",
+    "snyk": "^1.161.1"
   },
   "scripts": {
     "precommit": "lint-staged && yarn test:coverage",
@@ -24,7 +25,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -41,5 +44,6 @@
     "yarn.lock": [
       "git rm --cached"
     ]
-  }
+  },
+  "snyk": true
 }
