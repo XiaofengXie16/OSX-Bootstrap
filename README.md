@@ -2,7 +2,7 @@
 
 ### Install the most essential tools for frontend development with a single command!
 
-### Download : https://osx-bootstrap-git-master.xiaofeng02111.now.sh/
+### Download : https://osx-bootstrap.now.sh
 
 ## Usage:
 
