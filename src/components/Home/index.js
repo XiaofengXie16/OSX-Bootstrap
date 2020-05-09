@@ -14,16 +14,16 @@ class Home extends Component {
     frameworkName: 'react',
   };
   getPackageState = data => {
-    let pacakageState = {};
+    let packageState = {};
     for (let key in data) {
       for (let option in data[key]) {
-        pacakageState = {
-          ...pacakageState,
+        packageState = {
+          ...packageState,
           [data[key][option].identifier]: true,
         };
       }
     }
-    return pacakageState;
+    return packageState;
   };
   componentDidMount = () => {
     this.setState({
