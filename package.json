@@ -1,6 +1,7 @@
 {
   "name": "osx-bootstrap",
   "version": "0.1.0",
+  "repository": "https://github.com/skyrex-mark/OSX-Bootstrap",
   "dependencies": {
     "axios": "^0.19.2",
     "create-react-app": "^3.4.1",
