@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card } from "semantic-ui-react";
 import AngularLogo from "../../../assets/angular.svg";
 import ReactLogo from "../../../assets/react.svg";
@@ -7,36 +7,29 @@ import DownloadCard from "./DownloadCard";
 const style = {
   container: {
     paddingLeft: "2em",
-    paddingRight: "2em"
-  }
+    paddingRight: "2em",
+  },
 };
-export default class Download extends Component {
-  render() {
-    const { downloadHandler, advancedHandler } = this.props;
-    return (
-      <Card.Group style={style.container} itemsPerRow={3} stackable>
+const Download = (props) => {
+  const { downloadHandler, advancedHandler } = props;
+  const frameworks = [
+    { logo: ReactLogo, name: "react", color: "blue" },
+    { logo: AngularLogo, name: "angular", color: "red" },
+    { logo: VueLogo, name: "vue", color: "green" },
+  ];
+  return (
+    <Card.Group style={style.container} itemsPerRow={3} stackable>
+      {frameworks.map(({ name, color, logo }) => (
         <DownloadCard
-          logo={ReactLogo}
-          name="react"
-          color="blue"
+          key={name}
+          logo={logo}
+          name={name}
+          color={color}
           downloadHandler={downloadHandler}
           advancedHandler={advancedHandler}
         />
-        <DownloadCard
-          logo={AngularLogo}
-          name="angular"
-          color="red"
-          downloadHandler={downloadHandler}
-          advancedHandler={advancedHandler}
-        />
-        <DownloadCard
-          logo={VueLogo}
-          name="vue"
-          color="green"
-          downloadHandler={downloadHandler}
-          advancedHandler={advancedHandler}
-        />
-      </Card.Group>
-    );
-  }
-}
+      ))}
+    </Card.Group>
+  );
+};
+export default Download;

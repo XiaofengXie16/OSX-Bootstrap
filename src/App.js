@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import Home from "./components/Home";
 import Banner from "./components/Banner";
 import Ribbon from "./components/Ribbon";
 import "./App.css";
 
-export default class App extends Component {
-  render() {
+const App=()=>{
     return (
       <div className="App">
         <Ribbon
@@ -18,5 +17,6 @@ export default class App extends Component {
         <Home />
       </div>
     );
-  }
 }
+
+export default App;

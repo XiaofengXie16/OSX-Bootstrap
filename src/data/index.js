@@ -66,18 +66,6 @@ const options = {
   ],
   vs_extension: [
     {
-      name: 'Auto Close Tag',
-      value: 'formulahendry.auto-close-tag',
-      identifier: 'autoclose',
-      category: 'extension',
-    },
-    {
-      name: 'Auto Import',
-      value: 'steoates.autoimport',
-      identifier: 'autoimport',
-      category: 'extension',
-    },
-    {
       name: 'Bracket Pair Colorizer',
       value: 'CoenraadS.bracket-pair-colorizer',
       identifier: 'colorizer',
@@ -125,6 +113,12 @@ const options = {
       identifier: 'onedark',
       category: 'extension',
     },
+    {
+      name:"Live Share Extension Pack",
+      value:"MS-vsliveshare.vsliveshare-pac",
+      identifier: "liveshare",
+      category: 'extension',
+    }
   ],
 };
 export default options;

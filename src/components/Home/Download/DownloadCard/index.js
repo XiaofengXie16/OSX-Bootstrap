@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React  from "react";
 import { Button, Card, Image } from "semantic-ui-react";
-export default class DownloadCard extends Component {
-  render() {
-    const { logo, name, downloadHandler, advancedHandler, color } = this.props;
+const DownloadCard =(props)=> {
+    const { logo, name, downloadHandler, advancedHandler, color } = props;
     return (
       <Card color={color} style={{ marginBottom: "2em" }}>
         <Card.Content>
@@ -30,5 +29,5 @@ export default class DownloadCard extends Component {
         </Card.Content>
       </Card>
     );
-  }
 }
+export default DownloadCard;
