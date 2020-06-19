@@ -1,9 +1,15 @@
+interface Type {
+  name: string;
+  value: string;
+  identifier: string;
+  category: string;
+}
 export const template = (
-  common,
-  cask,
-  framework,
-  npm,
-  extensions
+  common: string,
+  cask: string,
+  framework: string,
+  npm: string,
+  extensions: string
 ) => `echo "Starting bootstrapping"
 
 # Check for Homebrew, install if we don't have it

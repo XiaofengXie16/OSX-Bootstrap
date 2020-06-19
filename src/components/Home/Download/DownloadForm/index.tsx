@@ -1,9 +1,21 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
-const DownloadForm = props => (
+
+interface DownloadFormProps {
+  data: Array<Type>;
+  handler: (
+    identifier: string
+  ) => (event: React.FormEvent<HTMLInputElement>) => void;
+}
+interface Type {
+  name: string;
+  identifier: string;
+  value: string;
+}
+const DownloadForm = (props: DownloadFormProps) => (
   <Form size="massive" key="massive">
     <Form.Group grouped>
-      {props.data.map(item => (
+      {props.data.map((item) => (
         <Form.Checkbox
           key={item.name}
           label={item.name}
@@ -13,7 +25,7 @@ const DownloadForm = props => (
           defaultChecked
           style={{
             fontSize: "2vh",
-            margin: "0.5vh"
+            margin: "0.5vh",
           }}
         />
       ))}
