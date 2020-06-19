@@ -1,6 +1,11 @@
 import React from "react";
 
-const Ribbon = props => (
+interface RibbonProps {
+  href: string;
+  src: string;
+  alt: string;
+}
+const Ribbon = (props: RibbonProps) => (
   <a href={props.href}>
     <img
       style={{ position: "absolute", top: "0", right: "0", border: "0" }}

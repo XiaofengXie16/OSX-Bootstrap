@@ -1,16 +1,26 @@
 import fileDownload from "js-file-download";
 import JSZip from "jszip";
-import data from "../data";
+import data, { DataType, Key, Type } from "../data";
 import { template } from "../template";
 
+const COMMON_CATEGORY = "common";
+const CASK_CATEGORY = "cask";
+const FRAMEWORK_CATEGORY = "framework";
+const NPM_CATEGORY = "npm";
+const EXTENSION_CATEGORY = "extension";
+
+type CATEGORY = "common" | "cask" | "framework" | "npm" | "extension";
 /**
  * This function converts a nested package data object to an array of objects
  * @param {Object} data
  */
-export const transform = (data) => {
-  const reducer = (accumulator, cur) => [...accumulator, ...cur];
+export const transform = (data: DataType): Type[] => {
+  const reducer = (accumulator: Type[], cur: Type[]) => [
+    ...accumulator,
+    ...cur,
+  ];
   return Object.keys(data)
-    .map((item) => data[item])
+    .map((item) => data[item as Key])
     .reduce(reducer, []);
 };
 
@@ -19,8 +29,11 @@ export const transform = (data) => {
  * @param {array} data  - an array of package data object
  * @param {array} state - react state object that contains user's selection
  */
-export const selectionFilter = (data, state) => {
-  const reducer = (accumulator, cur) => {
+export const selectionFilter = (
+  data: Type[],
+  state: { [key: string]: boolean }
+): Type[] => {
+  const reducer = (accumulator: Type[], cur: Type) => {
     accumulator.push(cur);
     return accumulator;
   };
@@ -33,8 +46,12 @@ export const selectionFilter = (data, state) => {
  * @param {string} identifier - category
  * @param {string} prefix     - linux command prefix
  */
-export const categoryBuilder = (data, identifier, prefix = "") => {
-  const reducer = (accumulator, cur) => {
+export const categoryBuilder = (
+  data: Type[],
+  identifier: CATEGORY,
+  prefix = ""
+) => {
+  const reducer = (accumulator: string[], cur: string) => {
     accumulator.push(cur);
     return accumulator;
   };
@@ -45,18 +62,13 @@ export const categoryBuilder = (data, identifier, prefix = "") => {
     .join("\n");
 };
 
-const COMMON_CATEGORY = "common";
-const CASK_CATEGORY = "cask";
-const FRAMEWORK_CATEGORY = "framework";
-const NPM_CATEGORY = "npm";
-const EXTENSION_CATEGORY = "extension";
 const transformed = transform(data);
 
 /**
  * This functions creates the installation script and download the script to user's local system
  * @param {{angular: boolean, vue: boolean, react: boolean}} data
  */
-export const downloadHelper = async (data) => {
+export const downloadHelper = async (data: { [key: string]: boolean }) => {
   const zip = new JSZip();
   const result = selectionFilter(transformed, data);
 
@@ -80,13 +92,13 @@ export const downloadHelper = async (data) => {
   fileDownload(file, "osx_bootstrap.zip");
 };
 
-export const getPackageState = (data) => {
+export const getPackageState = (data: DataType): { [key: string]: boolean } => {
   let packageState = {};
   for (let key in data) {
-    for (let option in data[key]) {
+    for (let option in data[key as Key]) {
       packageState = {
         ...packageState,
-        [data[key][option].identifier]: true,
+        [data[key as Key][option].identifier]: true,
       };
     }
   }
