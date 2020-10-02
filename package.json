@@ -4,7 +4,7 @@
   "repository": "https://github.com/skyrex-mark/OSX-Bootstrap",
   "dependencies": {
     "@types/jest": "^26.0.0",
-    "@types/node": "^14.0.14",
+    "@types/node": "^14.10.0",
     "@types/react": "^16.9.38",
     "@types/react-dom": "^16.9.8",
     "@types/react-scrollable-anchor": "^0.6.0",
