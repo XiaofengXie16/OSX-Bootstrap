@@ -8,7 +8,7 @@
     "@types/react": "^16.9.38",
     "@types/react-dom": "^16.9.8",
     "@types/react-scrollable-anchor": "^0.6.0",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "create-react-app": "^3.4.1",
     "fullpage-react": "^3.1.0",
     "global": "^4.4.0",
