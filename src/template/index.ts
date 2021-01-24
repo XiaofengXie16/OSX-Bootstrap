@@ -1,9 +1,3 @@
-interface Type {
-  name: string;
-  value: string;
-  identifier: string;
-  category: string;
-}
 export const template = (
   common: string,
   cask: string,
